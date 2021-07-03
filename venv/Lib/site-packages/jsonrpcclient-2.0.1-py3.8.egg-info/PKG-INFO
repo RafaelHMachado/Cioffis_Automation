@@ -1,0 +1,78 @@
+Metadata-Version: 1.1
+Name: jsonrpcclient
+Version: 2.0.1
+Summary: JSON-RPC client library.
+Home-page: https://jsonrpcclient.readthedocs.org/
+Author: Beau Barker
+Author-email: beauinmelbourne@gmail.com
+License: UNKNOWN
+Description: jsonrpcclient
+        *************
+        
+        Make `remote procedure calls
+        <http://en.wikipedia.org/wiki/Remote_procedure_call>`_ with `JSON-RPC
+        <http://www.jsonrpc.org/>`_.
+        
+        .. sourcecode:: sh
+        
+            $ pip install jsonrpcclient requests
+        
+        Simply set the server details, then make a request:
+        
+        .. sourcecode:: python
+        
+            >>> from jsonrpcclient.http_server import HTTPServer
+            >>> server = HTTPServer('http://example.com/api')
+            >>> server.request('add', 2, 3)
+            5
+        
+        Full documentation is available at https://jsonrpcclient.readthedocs.org/.
+        
+        
+        Recent Changes
+        ==============
+        
+        2.0.1 (2015-09-04)
+        ------------------
+        
+        A major update. These changes open up the module for communication protocols
+        other than just HTTP.
+        
+        - Importantly, the ``Server`` class has been renamed ``HTTPServer``. Adjust
+          your code like this:
+        
+        .. sourcecode:: python
+        
+            >>> from jsonrpcclient.http_server import HTTPServer
+            >>> server = HTTPServer('http://example.com/api')
+        
+        - The requests module, which is required to send requests over HTTP, will no
+          longer be installed as a dependency. It's now up to the user to install it
+          like this:
+        
+        .. sourcecode:: sh
+        
+            $ pip install jsonrpcclient requests
+        
+        - Three exceptions have been removed: ``InvalidRequest`` (out of scope),
+          ``InvalidResponse`` (catch ``jsonschema.ValidationError`` instead) and
+          ``ConnectionError`` (catch the `requests module exceptions
+          <http://www.python-requests.org/en/latest/api/#exceptions>`_ instead).
+        
+        - Faster validation of response messages.
+        
+        - Requests are now sent and logged with the JSON-RPC parts in the right order,
+          (beginning with ``'jsonrpc': 2.0'`` etc.), which is just nicer to read.
+        
+        - `ZeroMQ <http://jsonrpcclient.readthedocs.org/zmq_server.html>`_ protocol
+          added.
+        
+        - `Documentation <http://jsonrpcclient.readthedocs.org/>`_ overhauled.
+        
+        - Other fixes and improvements.
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4

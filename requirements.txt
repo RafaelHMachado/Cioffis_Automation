@@ -1,0 +1,11 @@
+python 3.8
+sphinx 3.2.1
+Microsoft Visual C++ 14.0
+
+# Dependencies in python
+os
+sys
+csv
+pandas
+openpyxl
+json

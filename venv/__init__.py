@@ -1,0 +1,2 @@
+global myMainPath
+myMainPath = '../venv'
